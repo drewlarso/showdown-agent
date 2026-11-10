@@ -12,9 +12,12 @@ class GameState:
 @dataclass(frozen=True)
 class PokeState:
     species: str
-    hp_fraction: float
+    level: int
+    hp_percent: float
     stats: dict[str, int | None]
+    base_stats: dict[str, int]
     types: list[str]
+    boosts: dict[str, int]
     moves: list[MoveState]
 
 
@@ -69,8 +72,11 @@ def _create_poke_state(pokemon: Pokemon, moves: list[MoveState]):
     types = [t.name for t in pokemon.types]
     return PokeState(
         species=pokemon.species,
-        hp_fraction=pokemon.current_hp_fraction,
-        stats=dict(pokemon.stats),
+        level=pokemon.level,
+        hp_percent=pokemon.current_hp_fraction,
+        stats=pokemon.stats.copy(),
+        base_stats=pokemon.base_stats.copy(),
         types=types.copy(),
+        boosts={},
         moves=moves,
     )
