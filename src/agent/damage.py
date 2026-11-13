@@ -6,18 +6,16 @@ from agent.state import MoveState, PokeState
 GEN_DATA = GenData(9)
 DEFAULT_IV = 31
 DEFAULT_EV = 85
-EV_BONUS = DEFAULT_EV // 4
 
 
-def calculate_hp(base_hp: int, level: int):
+def calculate_hp(base_hp: int, level: int, ev: int = DEFAULT_EV, iv: int = DEFAULT_IV):
     if base_hp == 1:
         return 1
-    return (((2 * base_hp + DEFAULT_IV + EV_BONUS) * level) // 100) + level + 10
+    return ((2 * base_hp + iv + (ev // 4)) * level) // 100 + level + 10
 
 
-def calculate_stat(base_stat: int, level: int, nature_modifier: float = 1.0):
-    raw_stat = (((2 * base_stat + DEFAULT_IV + EV_BONUS) * level) // 100) + 5
-    return int(raw_stat * nature_modifier)
+def calculate_stat(base_stat: int, level: int, ev: int = DEFAULT_EV, iv: int = DEFAULT_IV):
+    return ((2 * base_stat + iv + (ev // 4)) * level) // 100 + 5
 
 
 def get_stat(pokemon: PokeState, stat: str):

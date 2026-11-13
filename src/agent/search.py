@@ -16,6 +16,14 @@ def get_best_move(state: GameState, depth: int):
     return best_move
 
 
+def get_move_values(state: GameState, depth: int):
+    values: dict[str, float] = {}
+    for friendly_move in get_legal_actions(state, True):
+        if friendly_move:
+            values[friendly_move.id] = chance_node(state, friendly_move, depth)
+    return values
+
+
 def max_node(state: GameState, depth: int):
     if depth <= 0 or is_anyone_dead(state):
         return evaluate(state)

@@ -16,7 +16,7 @@ class BasicExpectimaxPlayer(Player):
         if len(battle.available_moves) == 1:
             return self.create_order(battle.available_moves[0])
 
-        state = build_state(battle)
+        state = build_state(battle, use_role_weights=False)
         if state is None:
             return self.choose_random_move(battle)
         if len(battle.available_moves) <= 0:

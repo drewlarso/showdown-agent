@@ -14,3 +14,5 @@ wheels/
 target/
 **/*.so
 .ruff_cache
+materials/
+data/
