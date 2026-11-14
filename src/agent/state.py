@@ -19,9 +19,20 @@ class PokeState:
     spa: int
     spd: int
     spe: int
+    boosts: Boosts
+    status: str
     item: str
     types: tuple[str, ...]
     moves: tuple[MoveState, ...]
+
+
+@dataclass(frozen=True)
+class Boosts:
+    atk: int = 0
+    defense: int = 0
+    spa: int = 0
+    spd: int = 0
+    spe: int = 0
 
 
 @dataclass(frozen=True)
@@ -33,6 +44,9 @@ class MoveState:
     priority: int
     accuracy: float
     probability: float
+    heal: float = 0.0
+    drain: float = 0.0
+    self_boosts: Boosts = Boosts()
 
 
 @dataclass(frozen=True)
