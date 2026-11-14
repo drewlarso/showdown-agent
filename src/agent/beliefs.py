@@ -58,6 +58,21 @@ def get_role_probabilities(pokemon: Pokemon):
     return beliefs
 
 
+def get_revealed_moves(pokemon: Pokemon):
+    return {move_id: 1.0 for move_id in pokemon.moves}
+
+
+def get_believed_moves(pokemon: Pokemon):
+    if pokemon.species not in RANDBATS and pokemon.base_species not in RANDBATS:
+        return get_revealed_moves(pokemon)
+
+    probabilities: dict[str, float] = {}
+    for role, role_probability in get_role_probabilities(pokemon).items():
+        for move_id, move_probability in get_move_probabilities(pokemon, role).items():
+            probabilities[move_id] = probabilities.get(move_id, 0.0) + role_probability * move_probability
+    return probabilities
+
+
 def _get_pokemon_info(pokemon: Pokemon) -> dict[str, Any]:
     if pokemon.species in RANDBATS:
         return RANDBATS[pokemon.species]
@@ -84,12 +99,12 @@ def _get_move_likelyhood(pokemon: Pokemon, role: dict[str, Any]):
 def _get_item_likelyhood(pokemon: Pokemon, role: dict[str, Any]):
     if not pokemon.item or pokemon.item == "unknown_item":
         return 1.0
-    choices = role["items"] or []
+    choices = role.get("items") or []
     return 1 / len(choices) if pokemon.item in choices else 0.0
 
 
 def _get_ability_likelyhood(pokemon: Pokemon, role: dict[str, Any]):
     if not pokemon.ability or pokemon.ability == "unknown_ability":
         return 1.0
-    choices = role["abilities"] or []
+    choices = role.get("abilities") or []
     return 1 / len(choices) if pokemon.ability in choices else 0.0

@@ -1,57 +1,34 @@
-from poke_env.battle import PokemonType
-from poke_env.data import GenData
-
+from agent.items import modify_attack, modify_damage, modify_defense
 from agent.state import MoveState, PokeState
-
-GEN_DATA = GenData(9)
-DEFAULT_IV = 31
-DEFAULT_EV = 85
+from agent.type_chart import TYPE_CHART
 
 
-def calculate_hp(base_hp: int, level: int, ev: int = DEFAULT_EV, iv: int = DEFAULT_IV):
-    if base_hp == 1:
-        return 1
-    return ((2 * base_hp + iv + (ev // 4)) * level) // 100 + level + 10
-
-
-def calculate_stat(base_stat: int, level: int, ev: int = DEFAULT_EV, iv: int = DEFAULT_IV):
-    return ((2 * base_stat + iv + (ev // 4)) * level) // 100 + 5
-
-
-def get_stat(pokemon: PokeState, stat: str):
-    value = pokemon.stats.get(stat)
-    if value:
-        return value
-    return calculate_stat(pokemon.base_stats[stat], pokemon.level)
-
-
-def calculate_damage_amount(attacker: PokeState, defender: PokeState, move: MoveState, roll_multiplier: float):
+def calculate_damage_percent(attacker: PokeState, defender: PokeState, move: MoveState, roll_multiplier: float = 0.925):
     if move.category == "STATUS" or not move.base_power:
-        return 0
+        return 0.0
 
-    types = [PokemonType[t] for t in defender.types]
-    type_multiplier = PokemonType[move.type].damage_multiplier(*types, type_chart=GEN_DATA.type_chart)
-    if type_multiplier == 0.0:
-        return 0
+    type_multiplier = _get_type_multiplier(move.type, defender.types)
 
     if move.category == "PHYSICAL":
-        attack_key, defense_key = "atk", "def"
+        attack, defense = attacker.atk, defender.defense
     else:
-        attack_key, defense_key = "spa", "spd"
+        attack, defense = attacker.spa, defender.spd
 
-    attack = get_stat(attacker, attack_key)
-    defense = get_stat(defender, defense_key)
-    defense = max(defense, 1)
+    attack = modify_attack(attacker.item, move.category, attack)
+    defense = modify_defense(defender.item, move.category, defense)
 
-    base = ((2 * attacker.level) // 5 + 2) * move.base_power * attack // defense
+    base = ((2 * attacker.level) // 5 + 2) * move.base_power * attack // max(defense, 1)
     base = base // 50 + 2
 
     stab = 1.5 if move.type in attacker.types else 1.0
+    damage = int(base * roll_multiplier * stab * type_multiplier)
+    damage = modify_damage(attacker.item, damage)
 
-    return int(base * roll_multiplier * stab * type_multiplier)
+    return damage / defender.max_hp
 
 
-def calculate_damage_percent(attacker: PokeState, defender: PokeState, move: MoveState, roll_multiplier: float):
-    damage = calculate_damage_amount(attacker, defender, move, roll_multiplier)
-    max_hp = calculate_hp(defender.base_stats["hp"], defender.level)
-    return damage / max_hp
+def _get_type_multiplier(move_type: str, defender_types: tuple[str, ...]):
+    multiplier = 1.0
+    for defender_type in defender_types:
+        multiplier *= TYPE_CHART.get(defender_type, {}).get(move_type, 1.0)
+    return multiplier

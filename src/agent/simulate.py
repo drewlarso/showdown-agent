@@ -1,17 +1,23 @@
 from dataclasses import replace
 
-from agent.damage import calculate_damage_percent, get_stat
-from agent.state import GameState, MoveState
+from agent.damage import calculate_damage_percent
+from agent.items import end_of_turn_hp, modify_speed
+from agent.state import ActionState, GameState, MoveState, SwitchState
 
-ROLL_RANGES = [(0.25, 0.85), (0.5, 0.925), (0.25, 1.0)]
+# ROLL_RANGES = [(0.25, 0.85), (0.5, 0.925), (0.25, 1.0)]
+ROLL_RANGES = [(1.0, 0.925)]
 
 
-def get_legal_actions(state: GameState, player_attacking: bool):
-    # add switches here later
-    if player_attacking:
-        return state.friendly_pokemon.moves
-    else:
-        return state.opponent_pokemon.moves or [None]
+def get_player_legal_actions(state: GameState):
+    actions: list[ActionState] = list(state.friendly_pokemon.moves)
+    for bench_index, pokemon in enumerate(state.friendly_bench):
+        if pokemon.hp_percent > 0:
+            actions.append(SwitchState(bench_index))
+    return actions
+
+
+def get_opponent_legal_actions(state: GameState):
+    return list(state.opponent_pokemon.moves)
 
 
 def is_anyone_dead(state: GameState):
@@ -20,10 +26,14 @@ def is_anyone_dead(state: GameState):
     return friendly_hp <= 0 or opponent_hp <= 0
 
 
-def simulate_attack(state: GameState, move: MoveState | None, player_attacking: bool):
-    if move is None:
-        return [(1.0, state)]
+def simulate_switch(state: GameState, bench_index: int):
+    bench = list(state.friendly_bench)
+    new_active = bench[bench_index]
+    bench[bench_index] = state.friendly_pokemon
+    return replace(state, friendly_pokemon=new_active, friendly_bench=tuple(bench))
 
+
+def simulate_attack(state: GameState, move: MoveState, player_attacking: bool):
     possibilities: list[tuple[float, GameState]] = []
 
     if player_attacking:
@@ -51,11 +61,15 @@ def simulate_attack(state: GameState, move: MoveState | None, player_attacking: 
     return possibilities
 
 
-def simulate_turn(state: GameState, friendly_move: MoveState, opponent_move: MoveState | None):
-    friendly_priority = friendly_move.priority
-    opponent_priority = opponent_move.priority if opponent_move else 0
-    friendly_speed = get_stat(state.friendly_pokemon, "spe")
-    opponent_speed = get_stat(state.opponent_pokemon, "spe")
+def simulate_turn(state: GameState, friendly_action: ActionState, opponent_move: MoveState):
+    if isinstance(friendly_action, SwitchState):
+        switched_state = simulate_switch(state, friendly_action.bench_index)
+        return apply_turn_ending(simulate_attack(switched_state, opponent_move, False))
+
+    friendly_priority = friendly_action.priority
+    opponent_priority = opponent_move.priority
+    friendly_speed = modify_speed(state.friendly_pokemon.item, state.friendly_pokemon.spe)
+    opponent_speed = modify_speed(state.opponent_pokemon.item, state.opponent_pokemon.spe)
 
     if friendly_priority != opponent_priority:
         orders = [(1.0, friendly_priority > opponent_priority)]
@@ -68,11 +82,11 @@ def simulate_turn(state: GameState, friendly_move: MoveState, opponent_move: Mov
 
     for probability, friendly_first in orders:
         if friendly_first:
-            first_move = friendly_move
+            first_move = friendly_action
             second_move = opponent_move
         else:
             first_move = opponent_move
-            second_move = friendly_move
+            second_move = friendly_action
 
         for first_probability, first_state in simulate_attack(state, first_move, friendly_first):
             if is_anyone_dead(first_state):
@@ -82,4 +96,18 @@ def simulate_turn(state: GameState, friendly_move: MoveState, opponent_move: Mov
             for second_probability, second_state in simulate_attack(first_state, second_move, not friendly_first):
                 possibilities.append((probability * first_probability * second_probability, second_state))
 
-    return possibilities
+    return apply_turn_ending(possibilities)
+
+
+def apply_turn_ending(possibilities: list[tuple[float, GameState]]):
+    return [(probability, _end_turn(next_state)) for probability, next_state in possibilities]
+
+
+def _end_turn(state: GameState):
+    friendly = state.friendly_pokemon
+    opponent = state.opponent_pokemon
+    return replace(
+        state,
+        friendly_pokemon=replace(friendly, hp_percent=end_of_turn_hp(friendly.item, friendly.hp_percent)),
+        opponent_pokemon=replace(opponent, hp_percent=end_of_turn_hp(opponent.item, opponent.hp_percent)),
+    )
