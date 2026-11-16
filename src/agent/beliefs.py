@@ -1,110 +1,96 @@
 import json
-from itertools import combinations
+from math import comb
 from pathlib import Path
 from typing import Any
 
 from poke_env.battle import Pokemon
 
 
-def _load_randbats():
+def load_randbats() -> dict[str, Any]:
     data_file = Path(__file__).parent.parent.parent / "data" / "randbats.json"
     if not data_file.exists():
         raise RuntimeError("no randbats found, run the fetch_randbats.py script to fetch them")
 
-    with open(data_file, "r") as f:
-        data = json.loads(f.read())
-
-    return data
+    with data_file.open() as file:
+        return json.load(file)
 
 
-RANDBATS = _load_randbats()
+RANDBATS = load_randbats()
 
 
-def get_role_info(pokemon: Pokemon, role: str):
-    pokemon_info = _get_pokemon_info(pokemon)
-    return pokemon_info["roles"][role]
+def get_revealed_moves(pokemon: Pokemon) -> dict[str, float]:
+    return {move_id: 1.0 for move_id in pokemon.moves}
 
 
-def get_move_probabilities(pokemon: Pokemon, role: str):
-    role_info = get_role_info(pokemon, role)
-    pool = role_info["moves"]
+def get_believed_moves(pokemon: Pokemon) -> dict[str, float]:
+    pokemon_info = get_pokemon_info(pokemon)
+    if pokemon_info is None:
+        return get_revealed_moves(pokemon)
 
-    revealed = set(pokemon.moves)
-    unknown = [move for move in pool if move not in revealed]
+    roles = pokemon_info["roles"]
+    revealed_moves = set(pokemon.moves)
+    move_priors: dict[str, float] = {}
 
-    open_slots = max(0, min(4, len(pool)) - len(revealed))
-    share = min(1.0, open_slots / len(unknown)) if unknown else 0.0
+    for role, role_probability in get_role_probabilities(pokemon, roles).items():
+        move_probabilities = get_move_probabilities(revealed_moves, roles[role]["moves"])
+        for move_id, move_probability in move_probabilities.items():
+            move_priors[move_id] = move_priors.get(move_id, 0.0) + role_probability * move_probability
 
-    probabilities = {move: 1.0 for move in revealed}
-    for move in unknown:
-        probabilities[move] = share
-
-    return probabilities
+    return move_priors
 
 
-def get_role_probabilities(pokemon: Pokemon):
-    pokemon_info = _get_pokemon_info(pokemon)
-    roles: dict[str, Any] = pokemon_info["roles"]
+def get_pokemon_info(pokemon: Pokemon) -> dict[str, Any] | None:
+    if pokemon.species in RANDBATS:
+        return RANDBATS[pokemon.species]
+    return RANDBATS.get(pokemon.base_species)
 
+
+def get_role_probabilities(pokemon: Pokemon, roles: dict[str, Any]) -> dict[str, float]:
+    revealed_moves = set(pokemon.moves)
     beliefs = {role: 1 / len(roles) for role in roles}
+    move_likelihoods = {role: get_move_likelihood(revealed_moves, info["moves"]) for role, info in roles.items()}
+    item_likelihoods = {
+        role: get_observed_likelihood(pokemon.item, info.get("items") or [], "unknown_item")
+        for role, info in roles.items()
+    }
+    ability_likelihoods = {
+        role: get_observed_likelihood(pokemon.ability, info.get("abilities") or [], "unknown_ability")
+        for role, info in roles.items()
+    }
 
-    for factor in [_get_move_likelyhood, _get_item_likelyhood, _get_ability_likelyhood]:
-        likelyhood = {role: factor(pokemon, roles[role]) for role in roles}
-        unnorm = {role: beliefs[role] * likelyhood[role] for role in roles}
-        total = sum(unnorm.values())
-        if total > 0:
-            beliefs = {role: unnorm[role] / total for role in roles}
+    for likelihoods in (move_likelihoods, item_likelihoods, ability_likelihoods):
+        weighted_roles = {role: beliefs[role] * likelihoods[role] for role in roles}
+        total_weight = sum(weighted_roles.values())
+        if total_weight > 0:
+            beliefs = {role: weight / total_weight for role, weight in weighted_roles.items()}
 
     return beliefs
 
 
-def get_revealed_moves(pokemon: Pokemon):
-    return {move_id: 1.0 for move_id in pokemon.moves}
+def get_move_probabilities(revealed_moves: set[str], move_pool: list[str]) -> dict[str, float]:
+    unknown_moves = [move for move in move_pool if move not in revealed_moves]
+    open_slots = max(0, min(4, len(move_pool)) - len(revealed_moves))
+    share = min(1.0, open_slots / len(unknown_moves)) if unknown_moves else 0.0
 
-
-def get_believed_moves(pokemon: Pokemon):
-    if pokemon.species not in RANDBATS and pokemon.base_species not in RANDBATS:
-        return get_revealed_moves(pokemon)
-
-    probabilities: dict[str, float] = {}
-    for role, role_probability in get_role_probabilities(pokemon).items():
-        for move_id, move_probability in get_move_probabilities(pokemon, role).items():
-            probabilities[move_id] = probabilities.get(move_id, 0.0) + role_probability * move_probability
+    probabilities = {move: 1.0 for move in revealed_moves}
+    for move in unknown_moves:
+        probabilities[move] = share
     return probabilities
 
 
-def _get_pokemon_info(pokemon: Pokemon) -> dict[str, Any]:
-    if pokemon.species in RANDBATS:
-        return RANDBATS[pokemon.species]
-    if pokemon.base_species in RANDBATS:
-        return RANDBATS[pokemon.base_species]
-    raise RuntimeError(f"could not find '{pokemon.species}' in the randbats file")
+def get_move_likelihood(revealed_moves: set[str], move_pool: list[str]) -> float:
+    set_size = min(4, len(move_pool))
+    revealed_count = len(revealed_moves)
+    if revealed_count > set_size or not revealed_moves.issubset(move_pool):
+        return 0.0
+
+    matching_sets = comb(len(move_pool) - revealed_count, set_size - revealed_count)
+    possible_sets = comb(len(move_pool), set_size)
+    return matching_sets / possible_sets
 
 
-def _get_matching_sets(pokemon: Pokemon, role_info: dict[str, Any]):
-    revealed = set(pokemon.moves)
-    pool = role_info["moves"]
-
-    possible_sets = list(combinations(pool, min(4, len(pool))))
-    matching_sets = [s for s in possible_sets if revealed <= set(s)]
-
-    return matching_sets, possible_sets
-
-
-def _get_move_likelyhood(pokemon: Pokemon, role: dict[str, Any]):
-    matching_sets, possible_sets = _get_matching_sets(pokemon, role)
-    return len(matching_sets) / len(possible_sets)
-
-
-def _get_item_likelyhood(pokemon: Pokemon, role: dict[str, Any]):
-    if not pokemon.item or pokemon.item == "unknown_item":
+def get_observed_likelihood(observed: str | None, choices: list[str], unknown_value: str) -> float:
+    if not observed or observed == unknown_value:
         return 1.0
-    choices = role.get("items") or []
-    return 1 / len(choices) if pokemon.item in choices else 0.0
 
-
-def _get_ability_likelyhood(pokemon: Pokemon, role: dict[str, Any]):
-    if not pokemon.ability or pokemon.ability == "unknown_ability":
-        return 1.0
-    choices = role.get("abilities") or []
-    return 1 / len(choices) if pokemon.ability in choices else 0.0
+    return 1 / len(choices) if observed in choices else 0.0
