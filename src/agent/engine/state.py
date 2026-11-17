@@ -23,6 +23,8 @@ class MoveState:
     prior: float
     heal: float = 0.0
     drain: float = 0.0
+    recoil: float = 0.0
+    self_destruct: bool = False
     self_boosts: Boosts = Boosts()
 
 

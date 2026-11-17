@@ -66,6 +66,8 @@ def build_move(move: Move, prior: float = 1.0) -> MoveState:
         prior=prior,
         heal=move.heal,
         drain=move.drain,
+        recoil=move.recoil,
+        self_destruct=bool(move.self_destruct),
         self_boosts=build_boosts(self_boosts or {}),
     )
 

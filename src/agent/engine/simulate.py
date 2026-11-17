@@ -91,10 +91,13 @@ def simulate_move(state: GameState, move: MoveState, friendly_attacking: bool) -
     damage_dealt = min(damage_percent, defender.hp_percent)
     damaged_defender = replace(defender, hp_percent=defender.hp_percent - damage_dealt)
 
-    hp_change = move.heal + move.drain * damage_dealt
+    damage_hp = damage_dealt * defender.max_hp
+    hp_change = move.heal + (move.drain - move.recoil) * damage_hp / attacker.max_hp
+    attacker_hp = 0.0 if move.self_destruct else max(0.0, min(1.0, attacker.hp_percent + hp_change))
+
     new_attacker = replace(
         attacker,
-        hp_percent=min(1.0, attacker.hp_percent + hp_change),
+        hp_percent=attacker_hp,
         boosts=add_boosts(attacker.boosts, move.self_boosts),
     )
 
