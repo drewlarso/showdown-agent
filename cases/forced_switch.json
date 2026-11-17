@@ -1,0 +1,665 @@
+{
+    "name": "forced_switch",
+    "description": "Revavroom fainted vs Incineroar. Barraskewda (at bench slot 3) is the best switch in because it is a water type going against a fire type",
+    "friendly": "Revavroom",
+    "opponent": "Incineroar",
+    "depth": 1,
+    "expected": "switch:3",
+    "state": {
+        "friendly_pokemon": {
+            "level": 79,
+            "hp_percent": 0,
+            "max_hp": 256,
+            "atk": 234,
+            "defense": 188,
+            "spa": 131,
+            "spd": 151,
+            "spe": 188,
+            "boosts": {
+                "atk": -1,
+                "defense": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+            },
+            "status": "FNT",
+            "item": "lifeorb",
+            "types": ["STEEL", "POISON"],
+            "moves": []
+        },
+        "opponent_pokemon": {
+            "level": 82,
+            "hp_percent": 0.57,
+            "max_hp": 290,
+            "atk": 236,
+            "defense": 195,
+            "spa": 178,
+            "spd": 195,
+            "spe": 146,
+            "boosts": {
+                "atk": 0,
+                "defense": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+            },
+            "status": "",
+            "item": "unknown_item",
+            "types": ["FIRE", "DARK"],
+            "moves": [
+                {
+                    "id": "earthquake",
+                    "base_power": 100,
+                    "type": "GROUND",
+                    "category": "PHYSICAL",
+                    "priority": 0,
+                    "accuracy": 1.0,
+                    "prior": 1.0,
+                    "heal": 0.0,
+                    "drain": 0.0,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 0,
+                        "defense": 0,
+                        "spa": 0,
+                        "spd": 0,
+                        "spe": 0
+                    }
+                },
+                {
+                    "id": "flareblitz",
+                    "base_power": 120,
+                    "type": "FIRE",
+                    "category": "PHYSICAL",
+                    "priority": 0,
+                    "accuracy": 1.0,
+                    "prior": 0.6,
+                    "heal": 0.0,
+                    "drain": 0.0,
+                    "recoil": 0.33,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 0,
+                        "defense": 0,
+                        "spa": 0,
+                        "spd": 0,
+                        "spe": 0
+                    }
+                },
+                {
+                    "id": "knockoff",
+                    "base_power": 65,
+                    "type": "DARK",
+                    "category": "PHYSICAL",
+                    "priority": 0,
+                    "accuracy": 1.0,
+                    "prior": 0.6,
+                    "heal": 0.0,
+                    "drain": 0.0,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 0,
+                        "defense": 0,
+                        "spa": 0,
+                        "spd": 0,
+                        "spe": 0
+                    }
+                },
+                {
+                    "id": "closecombat",
+                    "base_power": 120,
+                    "type": "FIGHTING",
+                    "category": "PHYSICAL",
+                    "priority": 0,
+                    "accuracy": 1.0,
+                    "prior": 0.6,
+                    "heal": 0.0,
+                    "drain": 0.0,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 0,
+                        "defense": -1,
+                        "spa": 0,
+                        "spd": -1,
+                        "spe": 0
+                    }
+                },
+                {
+                    "id": "noop",
+                    "base_power": 0,
+                    "type": "NORMAL",
+                    "category": "STATUS",
+                    "priority": 0,
+                    "accuracy": 1.0,
+                    "prior": 1.2,
+                    "heal": 0.0,
+                    "drain": 0.0,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 0,
+                        "defense": 0,
+                        "spa": 0,
+                        "spd": 0,
+                        "spe": 0
+                    }
+                }
+            ]
+        },
+        "friendly_bench": [
+            {
+                "level": 80,
+                "hp_percent": 0.2043343653250774,
+                "max_hp": 323,
+                "atk": 117,
+                "defense": 222,
+                "spa": 166,
+                "spd": 238,
+                "spe": 182,
+                "boosts": {
+                    "atk": 0,
+                    "defense": 0,
+                    "spa": 0,
+                    "spd": 0,
+                    "spe": 0
+                },
+                "status": "",
+                "item": "leftovers",
+                "types": ["PSYCHIC"],
+                "moves": [
+                    {
+                        "id": "moonblast",
+                        "base_power": 95,
+                        "type": "FAIRY",
+                        "category": "SPECIAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "calmmind",
+                        "base_power": 0,
+                        "type": "PSYCHIC",
+                        "category": "STATUS",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 1,
+                            "spd": 1,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "moonlight",
+                        "base_power": 0,
+                        "type": "FAIRY",
+                        "category": "STATUS",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "psyshock",
+                        "base_power": 80,
+                        "type": "PSYCHIC",
+                        "category": "SPECIAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    }
+                ]
+            },
+            {
+                "level": 93,
+                "hp_percent": 1.0,
+                "max_hp": 216,
+                "atk": 155,
+                "defense": 127,
+                "spa": 146,
+                "spd": 146,
+                "spe": 220,
+                "boosts": {
+                    "atk": 0,
+                    "defense": 0,
+                    "spa": 0,
+                    "spd": 0,
+                    "spe": 0
+                },
+                "status": "",
+                "item": "lightball",
+                "types": ["ELECTRIC"],
+                "moves": [
+                    {
+                        "id": "volttackle",
+                        "base_power": 120,
+                        "type": "ELECTRIC",
+                        "category": "PHYSICAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.33,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "playrough",
+                        "base_power": 90,
+                        "type": "FAIRY",
+                        "category": "PHYSICAL",
+                        "priority": 0,
+                        "accuracy": 0.9,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "knockoff",
+                        "base_power": 65,
+                        "type": "DARK",
+                        "category": "PHYSICAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "surf",
+                        "base_power": 90,
+                        "type": "WATER",
+                        "category": "SPECIAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    }
+                ]
+            },
+            {
+                "level": 82,
+                "hp_percent": 1.0,
+                "max_hp": 251,
+                "atk": 214,
+                "defense": 175,
+                "spa": 132,
+                "spd": 137,
+                "spe": 198,
+                "boosts": {
+                    "atk": 0,
+                    "defense": 0,
+                    "spa": 0,
+                    "spd": 0,
+                    "spe": 0
+                },
+                "status": "",
+                "item": "silverpowder",
+                "types": ["BUG", "DARK"],
+                "moves": [
+                    {
+                        "id": "knockoff",
+                        "base_power": 65,
+                        "type": "DARK",
+                        "category": "PHYSICAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "suckerpunch",
+                        "base_power": 70,
+                        "type": "DARK",
+                        "category": "PHYSICAL",
+                        "priority": 1,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "uturn",
+                        "base_power": 70,
+                        "type": "BUG",
+                        "category": "PHYSICAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "firstimpression",
+                        "base_power": 90,
+                        "type": "BUG",
+                        "category": "PHYSICAL",
+                        "priority": 2,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    }
+                ]
+            },
+            {
+                "level": 81,
+                "hp_percent": 1.0,
+                "max_hp": 231,
+                "atk": 246,
+                "defense": 144,
+                "spa": 144,
+                "spd": 128,
+                "spe": 267,
+                "boosts": {
+                    "atk": 0,
+                    "defense": 0,
+                    "spa": 0,
+                    "spd": 0,
+                    "spe": 0
+                },
+                "status": "",
+                "item": "choiceband",
+                "types": ["WATER"],
+                "moves": [
+                    {
+                        "id": "waterfall",
+                        "base_power": 80,
+                        "type": "WATER",
+                        "category": "PHYSICAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "poisonjab",
+                        "base_power": 80,
+                        "type": "POISON",
+                        "category": "PHYSICAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "closecombat",
+                        "base_power": 120,
+                        "type": "FIGHTING",
+                        "category": "PHYSICAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": -1,
+                            "spa": 0,
+                            "spd": -1,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "flipturn",
+                        "base_power": 60,
+                        "type": "WATER",
+                        "category": "PHYSICAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    }
+                ]
+            },
+            {
+                "level": 79,
+                "hp_percent": 0.10064935064935066,
+                "max_hp": 308,
+                "atk": 115,
+                "defense": 235,
+                "spa": 259,
+                "spd": 148,
+                "spe": 128,
+                "boosts": {
+                    "atk": 0,
+                    "defense": 0,
+                    "spa": 0,
+                    "spd": 0,
+                    "spe": 0
+                },
+                "status": "",
+                "item": "leftovers",
+                "types": ["GROUND", "NORMAL"],
+                "moves": [
+                    {
+                        "id": "moonlight",
+                        "base_power": 0,
+                        "type": "FAIRY",
+                        "category": "STATUS",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "vacuumwave",
+                        "base_power": 40,
+                        "type": "FIGHTING",
+                        "category": "SPECIAL",
+                        "priority": 1,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "calmmind",
+                        "base_power": 0,
+                        "type": "PSYCHIC",
+                        "category": "STATUS",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 1,
+                            "spd": 1,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "bloodmoon",
+                        "base_power": 140,
+                        "type": "NORMAL",
+                        "category": "SPECIAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

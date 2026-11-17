@@ -1,0 +1,562 @@
+{
+    "name": "ko_available",
+    "description": "Paldean Tauros (Aqua) is at full HP and Toxtricity is at 43%. Liquidation can KO Toxtricity",
+    "friendly": "Tauros-Paldea-Aqua",
+    "opponent": "Toxtricity",
+    "depth": 1,
+    "expected": "liquidation",
+    "state": {
+        "friendly_pokemon": {
+            "level": 81,
+            "hp_percent": 1.0,
+            "max_hp": 254,
+            "atk": 225,
+            "defense": 217,
+            "spa": 95,
+            "spd": 160,
+            "spe": 209,
+            "boosts": {
+                "atk": 0,
+                "defense": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+            },
+            "status": "",
+            "item": "lifeorb",
+            "types": ["FIGHTING", "WATER"],
+            "moves": [
+                {
+                    "id": "liquidation",
+                    "base_power": 85,
+                    "type": "WATER",
+                    "category": "PHYSICAL",
+                    "priority": 0,
+                    "accuracy": 1.0,
+                    "prior": 1.0,
+                    "heal": 0.0,
+                    "drain": 0.0,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 0,
+                        "defense": 0,
+                        "spa": 0,
+                        "spd": 0,
+                        "spe": 0
+                    }
+                },
+                {
+                    "id": "closecombat",
+                    "base_power": 120,
+                    "type": "FIGHTING",
+                    "category": "PHYSICAL",
+                    "priority": 0,
+                    "accuracy": 1.0,
+                    "prior": 1.0,
+                    "heal": 0.0,
+                    "drain": 0.0,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 0,
+                        "defense": -1,
+                        "spa": 0,
+                        "spd": -1,
+                        "spe": 0
+                    }
+                },
+                {
+                    "id": "aquajet",
+                    "base_power": 40,
+                    "type": "WATER",
+                    "category": "PHYSICAL",
+                    "priority": 1,
+                    "accuracy": 1.0,
+                    "prior": 1.0,
+                    "heal": 0.0,
+                    "drain": 0.0,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 0,
+                        "defense": 0,
+                        "spa": 0,
+                        "spd": 0,
+                        "spe": 0
+                    }
+                },
+                {
+                    "id": "bulkup",
+                    "base_power": 0,
+                    "type": "FIGHTING",
+                    "category": "STATUS",
+                    "priority": 0,
+                    "accuracy": 1.0,
+                    "prior": 1.0,
+                    "heal": 0.0,
+                    "drain": 0.0,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 1,
+                        "defense": 1,
+                        "spa": 0,
+                        "spd": 0,
+                        "spe": 0
+                    }
+                }
+            ]
+        },
+        "opponent_pokemon": {
+            "level": 82,
+            "hp_percent": 0.43,
+            "max_hp": 257,
+            "atk": 208,
+            "defense": 162,
+            "spa": 234,
+            "spd": 162,
+            "spe": 170,
+            "boosts": {
+                "atk": -1,
+                "defense": 0,
+                "spa": 1,
+                "spd": 0,
+                "spe": 0
+            },
+            "status": "",
+            "item": "",
+            "types": ["ELECTRIC", "POISON"],
+            "moves": [
+                {
+                    "id": "boomburst",
+                    "base_power": 140,
+                    "type": "NORMAL",
+                    "category": "SPECIAL",
+                    "priority": 0,
+                    "accuracy": 1.0,
+                    "prior": 1.0,
+                    "heal": 0.0,
+                    "drain": 0.0,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 0,
+                        "defense": 0,
+                        "spa": 0,
+                        "spd": 0,
+                        "spe": 0
+                    }
+                },
+                {
+                    "id": "gunkshot",
+                    "base_power": 120,
+                    "type": "POISON",
+                    "category": "PHYSICAL",
+                    "priority": 0,
+                    "accuracy": 0.8,
+                    "prior": 0.5,
+                    "heal": 0.0,
+                    "drain": 0.0,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 0,
+                        "defense": 0,
+                        "spa": 0,
+                        "spd": 0,
+                        "spe": 0
+                    }
+                },
+                {
+                    "id": "overdrive",
+                    "base_power": 80,
+                    "type": "ELECTRIC",
+                    "category": "SPECIAL",
+                    "priority": 0,
+                    "accuracy": 1.0,
+                    "prior": 1.0,
+                    "heal": 0.0,
+                    "drain": 0.0,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 0,
+                        "defense": 0,
+                        "spa": 0,
+                        "spd": 0,
+                        "spe": 0
+                    }
+                },
+                {
+                    "id": "shiftgear",
+                    "base_power": 0,
+                    "type": "STEEL",
+                    "category": "STATUS",
+                    "priority": 0,
+                    "accuracy": 1.0,
+                    "prior": 0.5,
+                    "heal": 0.0,
+                    "drain": 0.0,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 1,
+                        "defense": 0,
+                        "spa": 0,
+                        "spd": 0,
+                        "spe": 2
+                    }
+                },
+                {
+                    "id": "sludgewave",
+                    "base_power": 95,
+                    "type": "POISON",
+                    "category": "SPECIAL",
+                    "priority": 0,
+                    "accuracy": 1.0,
+                    "prior": 0.5,
+                    "heal": 0.0,
+                    "drain": 0.0,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 0,
+                        "defense": 0,
+                        "spa": 0,
+                        "spd": 0,
+                        "spe": 0
+                    }
+                },
+                {
+                    "id": "voltswitch",
+                    "base_power": 70,
+                    "type": "ELECTRIC",
+                    "category": "SPECIAL",
+                    "priority": 0,
+                    "accuracy": 1.0,
+                    "prior": 0.5,
+                    "heal": 0.0,
+                    "drain": 0.0,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 0,
+                        "defense": 0,
+                        "spa": 0,
+                        "spd": 0,
+                        "spe": 0
+                    }
+                }
+            ]
+        },
+        "friendly_bench": [
+            {
+                "level": 80,
+                "hp_percent": 0.8093645484949833,
+                "max_hp": 299,
+                "atk": 270,
+                "defense": 198,
+                "spa": 134,
+                "spd": 150,
+                "spe": 118,
+                "boosts": {
+                    "atk": 0,
+                    "defense": 0,
+                    "spa": 0,
+                    "spd": 0,
+                    "spe": 0
+                },
+                "status": "BRN",
+                "item": "flameorb",
+                "types": ["FIGHTING"],
+                "moves": [
+                    {
+                        "id": "closecombat",
+                        "base_power": 120,
+                        "type": "FIGHTING",
+                        "category": "PHYSICAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": -1,
+                            "spa": 0,
+                            "spd": -1,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "knockoff",
+                        "base_power": 65,
+                        "type": "DARK",
+                        "category": "PHYSICAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "machpunch",
+                        "base_power": 40,
+                        "type": "FIGHTING",
+                        "category": "PHYSICAL",
+                        "priority": 1,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "facade",
+                        "base_power": 70,
+                        "type": "NORMAL",
+                        "category": "PHYSICAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    }
+                ]
+            },
+            {
+                "level": 83,
+                "hp_percent": 0.8127659574468085,
+                "max_hp": 235,
+                "atk": 96,
+                "defense": 147,
+                "spa": 205,
+                "spd": 164,
+                "spe": 254,
+                "boosts": {
+                    "atk": 0,
+                    "defense": 0,
+                    "spa": 0,
+                    "spd": 0,
+                    "spe": 0
+                },
+                "status": "",
+                "item": "heavydutyboots",
+                "types": ["BUG", "FAIRY"],
+                "moves": [
+                    {
+                        "id": "terablast",
+                        "base_power": 80,
+                        "type": "NORMAL",
+                        "category": "SPECIAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "moonblast",
+                        "base_power": 95,
+                        "type": "FAIRY",
+                        "category": "SPECIAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "bugbuzz",
+                        "base_power": 90,
+                        "type": "BUG",
+                        "category": "SPECIAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "quiverdance",
+                        "base_power": 0,
+                        "type": "BUG",
+                        "category": "STATUS",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 1,
+                            "spd": 1,
+                            "spe": 1
+                        }
+                    }
+                ]
+            },
+            {
+                "level": 84,
+                "hp_percent": 1.0,
+                "max_hp": 263,
+                "atk": 122,
+                "defense": 166,
+                "spa": 213,
+                "spd": 166,
+                "spe": 204,
+                "boosts": {
+                    "atk": 0,
+                    "defense": 0,
+                    "spa": 0,
+                    "spd": 0,
+                    "spe": 0
+                },
+                "status": "",
+                "item": "heavydutyboots",
+                "types": ["FIRE", "FLYING"],
+                "moves": [
+                    {
+                        "id": "roost",
+                        "base_power": 0,
+                        "type": "FLYING",
+                        "category": "STATUS",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.5,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "hurricane",
+                        "base_power": 110,
+                        "type": "FLYING",
+                        "category": "SPECIAL",
+                        "priority": 0,
+                        "accuracy": 0.7,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "revelationdance",
+                        "base_power": 90,
+                        "type": "NORMAL",
+                        "category": "SPECIAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "quiverdance",
+                        "base_power": 0,
+                        "type": "BUG",
+                        "category": "STATUS",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 1,
+                            "spd": 1,
+                            "spe": 1
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
