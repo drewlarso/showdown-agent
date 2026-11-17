@@ -9,25 +9,33 @@ from agent.players.bayes_expectimax_player import BayesExpectimaxPlayer
 from agent.players.expectimax_player import ExpectimaxPlayer
 from agent.trace import log_matchup, make_summary_row, save_summary
 
-N_BATTLES = 3
-DEPTH = 1
-GAUNTLET_OPPONENTS: list[type[Player]] = [
-    RandomPlayer,
-    MaxBasePowerPlayer,
-    SimpleHeuristicsPlayer,
-    BasicExpectimaxPlayer,
-    BayesExpectimaxPlayer,
-]
+N_BATTLES = 10
+DEPTH = 2
 
 
-async def run_gauntlet(agent: ExpectimaxPlayer, output_folder: Path, n_battles: int = N_BATTLES) -> None:
+def make_opponents():
+    return {
+        "Random": RandomPlayer(max_concurrent_battles=0),
+        "MaxBasePower": MaxBasePowerPlayer(max_concurrent_battles=0),
+        "SimpleHeuristics": SimpleHeuristicsPlayer(max_concurrent_battles=0),
+        "BasicDepth1": BasicExpectimaxPlayer(depth=1, max_concurrent_battles=0),
+        "BasicDepth2": BasicExpectimaxPlayer(depth=2, max_concurrent_battles=0),
+        "BayesDepth1": BayesExpectimaxPlayer(depth=1, max_concurrent_battles=0),
+        "BayesDepth2": BayesExpectimaxPlayer(depth=2, max_concurrent_battles=0),
+    }
+
+
+async def run_gauntlet(
+    agent_name: str,
+    agent: ExpectimaxPlayer,
+    opponents: dict[str, Player],
+    output_folder: Path,
+    n_battles: int = N_BATTLES,
+) -> None:
     output_folder.mkdir(parents=True, exist_ok=False)
     summary_rows = []
 
-    agent_name = type(agent).__name__
-    for opponent_type in GAUNTLET_OPPONENTS:
-        opponent_name = opponent_type.__name__
-        opponent = opponent_type(max_concurrent_battles=0)
+    for opponent_name, opponent in opponents.items():
         print(f"{agent_name} vs {opponent_name}:")
         await agent.battle_against(opponent, n_battles=n_battles)
 
@@ -43,7 +51,7 @@ async def run_gauntlet(agent: ExpectimaxPlayer, output_folder: Path, n_battles: 
 async def main() -> None:
     agent = BayesExpectimaxPlayer(depth=DEPTH, max_concurrent_battles=0)
     run_name = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    await run_gauntlet(agent, Path("results") / run_name)
+    await run_gauntlet(f"BayesDepth{DEPTH}", agent, make_opponents(), Path("results") / run_name)
 
 
 if __name__ == "__main__":
