@@ -16,3 +16,4 @@ target/
 .ruff_cache
 materials/
 data/
+results/
