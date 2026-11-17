@@ -25,7 +25,11 @@ requires = ["maturin>=1.0,<2.0"]
 build-backend = "maturin"
 
 [dependency-groups]
-dev = ["maturin>=1.0,<2.0", "ruff>=0.17.4"]
+dev = ["maturin>=1.0,<2.0", "pytest>=9.2.0", "ruff>=0.17.4"]
 
 [tool.ruff]
 line-length = 120
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["tests"]

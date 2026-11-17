@@ -16,4 +16,7 @@ target/
 .ruff_cache
 materials/
 data/
-results/
+results/*
+!results/baseline/
+.pytest_cache/
+cases/captured
