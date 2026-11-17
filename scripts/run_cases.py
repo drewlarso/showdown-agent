@@ -39,8 +39,8 @@ def run_cases():
     table = "\n".join(lines) + "\n"
     print(table)
 
-    results_folder = root / "results" / "baseline"
-    results_folder.mkdir(parents=True, exist_ok=True)
+    results_folder = root / "results"
+    results_folder.mkdir(exist_ok=True)
     (results_folder / "cases.md").write_text(table)
 
 

@@ -9,8 +9,7 @@ from agent.players.bayes_expectimax_player import BayesExpectimaxPlayer
 from agent.players.expectimax_player import ExpectimaxPlayer
 from agent.trace import log_matchup, make_summary_row, save_summary
 
-N_BATTLES = 10
-DEPTH = 2
+N_BATTLES = 250
 
 
 def make_opponents():
@@ -49,9 +48,9 @@ async def run_gauntlet(
 
 
 async def main() -> None:
-    agent = BayesExpectimaxPlayer(depth=DEPTH, max_concurrent_battles=0)
+    agent = BayesExpectimaxPlayer(depth=2, max_concurrent_battles=0)
     run_name = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    await run_gauntlet(f"BayesDepth{DEPTH}", agent, make_opponents(), Path("results") / run_name)
+    await run_gauntlet("BayesDepth2", agent, make_opponents(), Path("results") / run_name)
 
 
 if __name__ == "__main__":

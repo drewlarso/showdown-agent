@@ -18,5 +18,8 @@ materials/
 data/
 results/*
 !results/baseline/
+!results/beliefs/
+!results/cases.md
+results/**/*.json
 .pytest_cache/
 cases/captured
