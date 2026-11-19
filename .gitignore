@@ -23,3 +23,4 @@ results/*
 results/**/*.json
 .pytest_cache/
 cases/captured
+.DS_Store

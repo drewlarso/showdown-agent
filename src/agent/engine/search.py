@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from agent.engine.mechanics import get_damage_percent
 from agent.engine.simulate import (
     get_friendly_actions,
+    get_usable_move_indices,
     has_anyone_fainted,
     simulate_switch,
     simulate_turn,
@@ -66,16 +67,19 @@ def chance_node(state: GameState, friendly_action: Action, depth: int, counter: 
     weighted_value = 0.0
     total_weight = 0.0
 
-    for opponent_move in state.opponent_pokemon.moves:
-        damage = get_damage_percent(state.opponent_pokemon, state.friendly_pokemon, opponent_move)
+    opponent = state.opponent_pokemon
+    for move_index in get_usable_move_indices(opponent):
+        opponent_move = opponent.moves[move_index]
+        damage = get_damage_percent(opponent, state.friendly_pokemon, opponent_move)
         move_weight = opponent_move.prior * (damage + DAMAGE_FLOOR)
 
-        for outcome_probability, next_state in simulate_turn(state, friendly_action, opponent_move):
+        for outcome_probability, next_state in simulate_turn(state, friendly_action, move_index):
             next_value = max_node(next_state, depth - 1, counter)
             weighted_value += move_weight * outcome_probability * next_value
 
         total_weight += move_weight
 
+    assert total_weight > 0
     return weighted_value / total_weight
 
 

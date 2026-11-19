@@ -9,7 +9,7 @@ from agent.players.bayes_expectimax_player import BayesExpectimaxPlayer
 from agent.players.expectimax_player import ExpectimaxPlayer
 from agent.trace import log_matchup, make_summary_row, save_summary
 
-N_BATTLES = 250
+N_BATTLES = 5
 
 
 def make_opponents():

@@ -2,7 +2,7 @@ from collections.abc import Callable
 
 from poke_env.battle import Battle, Move, Pokemon
 
-from agent.engine.state import Boosts, GameState, MoveState, PokemonState
+from agent.engine.state import Boosts, Category, GameState, Item, MoveState, PokemonState, Status, Type
 
 DEFAULT_IV = 31
 DEFAULT_EV = 85
@@ -47,9 +47,9 @@ def build_pokemon(pokemon: Pokemon, move_states: tuple[MoveState, ...]) -> Pokem
         spd=get_raw_stat(pokemon, "spd"),
         spe=get_raw_stat(pokemon, "spe"),
         boosts=build_boosts(pokemon.boosts),
-        status=pokemon.status.name if pokemon.status else "",
-        item=pokemon.item or "",
-        types=tuple(pokemon_type.name for pokemon_type in pokemon.types),
+        status=Status(pokemon.status.name) if pokemon.status else Status.NONE,
+        item=Item(pokemon.item or ""),
+        types=tuple(Type(pokemon_type.name) for pokemon_type in pokemon.types),
         moves=move_states,
     )
 
@@ -59,8 +59,8 @@ def build_move(move: Move, prior: float = 1.0) -> MoveState:
     return MoveState(
         id=move.id,
         base_power=int(move.base_power * move.expected_hits),
-        type=move.type.name,
-        category=move.category.name,
+        move_type=Type(move.type.name),
+        category=Category(move.category.name),
         priority=move.entry.get("priority", 0),
         accuracy=move.accuracy,
         prior=prior,
@@ -82,13 +82,13 @@ def build_opponent_moves(opponent_pokemon: Pokemon, move_priors: dict[str, float
 
         move = opponent_pokemon.moves.get(move_id) or Move(move_id, gen=9)
         move_state = build_move(move, prior)
-        if move_state.category == "STATUS" and not move_state.heal and move_state.self_boosts == Boosts():
+        if move_state.category == Category.STATUS and not move_state.heal and move_state.self_boosts == Boosts():
             noop_prior += prior
         else:
             move_states.append(move_state)
 
     if noop_prior > 0 or not move_states:
-        move_states.append(MoveState("noop", 0, "NORMAL", "STATUS", 0, 1.0, prior=noop_prior or 1.0))
+        move_states.append(MoveState("noop", 0, Type.NORMAL, Category.STATUS, 0, 1.0, prior=noop_prior or 1.0))
 
     return tuple(move_states)
 

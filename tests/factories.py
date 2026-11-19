@@ -1,11 +1,11 @@
-from agent.engine.state import Boosts, MoveState, PokemonState
+from agent.engine.state import Boosts, Category, Item, MoveState, PokemonState, Status, Type
 
 
 def make_move(
     id: str = "tackle",
     base_power: int = 80,
-    type: str = "NORMAL",
-    category: str = "PHYSICAL",
+    move_type: Type = Type.NORMAL,
+    category: Category = Category.PHYSICAL,
     priority: int = 0,
     accuracy: float = 1.0,
     prior: float = 1.0,
@@ -14,7 +14,7 @@ def make_move(
     return MoveState(
         id=id,
         base_power=base_power,
-        type=type,
+        move_type=move_type,
         category=category,
         priority=priority,
         accuracy=accuracy,
@@ -24,7 +24,7 @@ def make_move(
 
 
 def make_pokemon(
-    types: tuple[str, ...] = ("NORMAL",),
+    types: tuple[Type, ...] = (Type.NORMAL,),
     moves: tuple[MoveState, ...] = (),
     hp_percent: float = 1.0,
     spe: int = 200,
@@ -40,8 +40,8 @@ def make_pokemon(
         "spd": 200,
         "spe": spe,
         "boosts": Boosts(),
-        "status": "",
-        "item": "",
+        "status": Status.NONE,
+        "item": Item.NO_ITEM,
         "types": types,
         "moves": moves,
     }

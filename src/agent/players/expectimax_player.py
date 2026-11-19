@@ -1,6 +1,5 @@
-import json
 from collections.abc import Callable
-from dataclasses import asdict, dataclass
+from dataclasses import dataclass
 from time import perf_counter
 
 from poke_env.battle import AbstractBattle, Battle, Move, Pokemon
@@ -8,6 +7,7 @@ from poke_env.player import BattleOrder, Player, SingleBattleOrder
 
 from agent.build import GetOpponentMovePriors, build_state
 from agent.engine.search import SearchResult
+from agent.engine.state import dump_game_state
 
 type SearchFunction = Callable[[str, int], SearchResult]
 
@@ -72,7 +72,7 @@ class ExpectimaxPlayer(Player):
             )
             return order
 
-        state_json = json.dumps(asdict(state))
+        state_json = dump_game_state(state)
 
         search_start = perf_counter()
         try:

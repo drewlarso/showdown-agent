@@ -1,7 +1,7 @@
 from factories import make_move, make_pokemon
 
 from agent.engine.search import get_best_action, get_state_value
-from agent.engine.state import Action, GameState
+from agent.engine.state import Action, GameState, Type
 
 
 def test_picks_ko_move_when_available():
@@ -22,7 +22,7 @@ def test_picks_ko_move_when_available():
 
 def test_returns_value_for_every_legal_action():
     state = GameState(
-        friendly_pokemon=make_pokemon(moves=(make_move(), make_move(type="FIRE"))),
+        friendly_pokemon=make_pokemon(moves=(make_move(), make_move(move_type=Type.FIRE))),
         opponent_pokemon=make_pokemon(moves=(make_move(),)),
         friendly_bench=(make_pokemon(), make_pokemon(hp_percent=0)),
     )
@@ -48,7 +48,7 @@ def test_state_value_counts_alive_bonus():
 def test_search_is_deterministic():
     move = make_move(accuracy=0.75)
     state = GameState(
-        friendly_pokemon=make_pokemon(moves=(move, make_move(type="FIRE"))),
+        friendly_pokemon=make_pokemon(moves=(move, make_move(move_type=Type.FIRE))),
         opponent_pokemon=make_pokemon(moves=(move,)),
         friendly_bench=(make_pokemon(),),
     )

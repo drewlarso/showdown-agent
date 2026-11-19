@@ -50,7 +50,7 @@
                 {
                     "id": "earthquake",
                     "base_power": 100,
-                    "type": "GROUND",
+                    "move_type": "GROUND",
                     "category": "PHYSICAL",
                     "priority": 0,
                     "accuracy": 1.0,
@@ -70,7 +70,7 @@
                 {
                     "id": "flareblitz",
                     "base_power": 120,
-                    "type": "FIRE",
+                    "move_type": "FIRE",
                     "category": "PHYSICAL",
                     "priority": 0,
                     "accuracy": 1.0,
@@ -90,7 +90,7 @@
                 {
                     "id": "knockoff",
                     "base_power": 65,
-                    "type": "DARK",
+                    "move_type": "DARK",
                     "category": "PHYSICAL",
                     "priority": 0,
                     "accuracy": 1.0,
@@ -110,7 +110,7 @@
                 {
                     "id": "closecombat",
                     "base_power": 120,
-                    "type": "FIGHTING",
+                    "move_type": "FIGHTING",
                     "category": "PHYSICAL",
                     "priority": 0,
                     "accuracy": 1.0,
@@ -130,7 +130,7 @@
                 {
                     "id": "noop",
                     "base_power": 0,
-                    "type": "NORMAL",
+                    "move_type": "NORMAL",
                     "category": "STATUS",
                     "priority": 0,
                     "accuracy": 1.0,
@@ -173,7 +173,7 @@
                     {
                         "id": "moonblast",
                         "base_power": 95,
-                        "type": "FAIRY",
+                        "move_type": "FAIRY",
                         "category": "SPECIAL",
                         "priority": 0,
                         "accuracy": 1.0,
@@ -193,7 +193,7 @@
                     {
                         "id": "calmmind",
                         "base_power": 0,
-                        "type": "PSYCHIC",
+                        "move_type": "PSYCHIC",
                         "category": "STATUS",
                         "priority": 0,
                         "accuracy": 1.0,
@@ -213,7 +213,7 @@
                     {
                         "id": "moonlight",
                         "base_power": 0,
-                        "type": "FAIRY",
+                        "move_type": "FAIRY",
                         "category": "STATUS",
                         "priority": 0,
                         "accuracy": 1.0,
@@ -233,7 +233,7 @@
                     {
                         "id": "psyshock",
                         "base_power": 80,
-                        "type": "PSYCHIC",
+                        "move_type": "PSYCHIC",
                         "category": "SPECIAL",
                         "priority": 0,
                         "accuracy": 1.0,
@@ -275,7 +275,7 @@
                     {
                         "id": "volttackle",
                         "base_power": 120,
-                        "type": "ELECTRIC",
+                        "move_type": "ELECTRIC",
                         "category": "PHYSICAL",
                         "priority": 0,
                         "accuracy": 1.0,
@@ -295,7 +295,7 @@
                     {
                         "id": "playrough",
                         "base_power": 90,
-                        "type": "FAIRY",
+                        "move_type": "FAIRY",
                         "category": "PHYSICAL",
                         "priority": 0,
                         "accuracy": 0.9,
@@ -315,7 +315,7 @@
                     {
                         "id": "knockoff",
                         "base_power": 65,
-                        "type": "DARK",
+                        "move_type": "DARK",
                         "category": "PHYSICAL",
                         "priority": 0,
                         "accuracy": 1.0,
@@ -335,7 +335,7 @@
                     {
                         "id": "surf",
                         "base_power": 90,
-                        "type": "WATER",
+                        "move_type": "WATER",
                         "category": "SPECIAL",
                         "priority": 0,
                         "accuracy": 1.0,
@@ -377,7 +377,7 @@
                     {
                         "id": "knockoff",
                         "base_power": 65,
-                        "type": "DARK",
+                        "move_type": "DARK",
                         "category": "PHYSICAL",
                         "priority": 0,
                         "accuracy": 1.0,
@@ -397,7 +397,7 @@
                     {
                         "id": "suckerpunch",
                         "base_power": 70,
-                        "type": "DARK",
+                        "move_type": "DARK",
                         "category": "PHYSICAL",
                         "priority": 1,
                         "accuracy": 1.0,
@@ -417,7 +417,7 @@
                     {
                         "id": "uturn",
                         "base_power": 70,
-                        "type": "BUG",
+                        "move_type": "BUG",
                         "category": "PHYSICAL",
                         "priority": 0,
                         "accuracy": 1.0,
@@ -437,7 +437,7 @@
                     {
                         "id": "firstimpression",
                         "base_power": 90,
-                        "type": "BUG",
+                        "move_type": "BUG",
                         "category": "PHYSICAL",
                         "priority": 2,
                         "accuracy": 1.0,
@@ -479,7 +479,7 @@
                     {
                         "id": "waterfall",
                         "base_power": 80,
-                        "type": "WATER",
+                        "move_type": "WATER",
                         "category": "PHYSICAL",
                         "priority": 0,
                         "accuracy": 1.0,
@@ -499,7 +499,7 @@
                     {
                         "id": "poisonjab",
                         "base_power": 80,
-                        "type": "POISON",
+                        "move_type": "POISON",
                         "category": "PHYSICAL",
                         "priority": 0,
                         "accuracy": 1.0,
@@ -519,7 +519,7 @@
                     {
                         "id": "closecombat",
                         "base_power": 120,
-                        "type": "FIGHTING",
+                        "move_type": "FIGHTING",
                         "category": "PHYSICAL",
                         "priority": 0,
                         "accuracy": 1.0,
@@ -539,7 +539,7 @@
                     {
                         "id": "flipturn",
                         "base_power": 60,
-                        "type": "WATER",
+                        "move_type": "WATER",
                         "category": "PHYSICAL",
                         "priority": 0,
                         "accuracy": 1.0,
@@ -581,7 +581,7 @@
                     {
                         "id": "moonlight",
                         "base_power": 0,
-                        "type": "FAIRY",
+                        "move_type": "FAIRY",
                         "category": "STATUS",
                         "priority": 0,
                         "accuracy": 1.0,
@@ -601,7 +601,7 @@
                     {
                         "id": "vacuumwave",
                         "base_power": 40,
-                        "type": "FIGHTING",
+                        "move_type": "FIGHTING",
                         "category": "SPECIAL",
                         "priority": 1,
                         "accuracy": 1.0,
@@ -621,7 +621,7 @@
                     {
                         "id": "calmmind",
                         "base_power": 0,
-                        "type": "PSYCHIC",
+                        "move_type": "PSYCHIC",
                         "category": "STATUS",
                         "priority": 0,
                         "accuracy": 1.0,
@@ -641,7 +641,7 @@
                     {
                         "id": "bloodmoon",
                         "base_power": 140,
-                        "type": "NORMAL",
+                        "move_type": "NORMAL",
                         "category": "SPECIAL",
                         "priority": 0,
                         "accuracy": 1.0,

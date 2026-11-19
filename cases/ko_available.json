@@ -29,7 +29,7 @@
                 {
                     "id": "liquidation",
                     "base_power": 85,
-                    "type": "WATER",
+                    "move_type": "WATER",
                     "category": "PHYSICAL",
                     "priority": 0,
                     "accuracy": 1.0,
@@ -49,7 +49,7 @@
                 {
                     "id": "closecombat",
                     "base_power": 120,
-                    "type": "FIGHTING",
+                    "move_type": "FIGHTING",
                     "category": "PHYSICAL",
                     "priority": 0,
                     "accuracy": 1.0,
@@ -69,7 +69,7 @@
                 {
                     "id": "aquajet",
                     "base_power": 40,
-                    "type": "WATER",
+                    "move_type": "WATER",
                     "category": "PHYSICAL",
                     "priority": 1,
                     "accuracy": 1.0,
@@ -89,7 +89,7 @@
                 {
                     "id": "bulkup",
                     "base_power": 0,
-                    "type": "FIGHTING",
+                    "move_type": "FIGHTING",
                     "category": "STATUS",
                     "priority": 0,
                     "accuracy": 1.0,
@@ -131,7 +131,7 @@
                 {
                     "id": "boomburst",
                     "base_power": 140,
-                    "type": "NORMAL",
+                    "move_type": "NORMAL",
                     "category": "SPECIAL",
                     "priority": 0,
                     "accuracy": 1.0,
@@ -151,7 +151,7 @@
                 {
                     "id": "gunkshot",
                     "base_power": 120,
-                    "type": "POISON",
+                    "move_type": "POISON",
                     "category": "PHYSICAL",
                     "priority": 0,
                     "accuracy": 0.8,
@@ -171,7 +171,7 @@
                 {
                     "id": "overdrive",
                     "base_power": 80,
-                    "type": "ELECTRIC",
+                    "move_type": "ELECTRIC",
                     "category": "SPECIAL",
                     "priority": 0,
                     "accuracy": 1.0,
@@ -191,7 +191,7 @@
                 {
                     "id": "shiftgear",
                     "base_power": 0,
-                    "type": "STEEL",
+                    "move_type": "STEEL",
                     "category": "STATUS",
                     "priority": 0,
                     "accuracy": 1.0,
@@ -211,7 +211,7 @@
                 {
                     "id": "sludgewave",
                     "base_power": 95,
-                    "type": "POISON",
+                    "move_type": "POISON",
                     "category": "SPECIAL",
                     "priority": 0,
                     "accuracy": 1.0,
@@ -231,7 +231,7 @@
                 {
                     "id": "voltswitch",
                     "base_power": 70,
-                    "type": "ELECTRIC",
+                    "move_type": "ELECTRIC",
                     "category": "SPECIAL",
                     "priority": 0,
                     "accuracy": 1.0,
@@ -274,7 +274,7 @@
                     {
                         "id": "closecombat",
                         "base_power": 120,
-                        "type": "FIGHTING",
+                        "move_type": "FIGHTING",
                         "category": "PHYSICAL",
                         "priority": 0,
                         "accuracy": 1.0,
@@ -294,7 +294,7 @@
                     {
                         "id": "knockoff",
                         "base_power": 65,
-                        "type": "DARK",
+                        "move_type": "DARK",
                         "category": "PHYSICAL",
                         "priority": 0,
                         "accuracy": 1.0,
@@ -314,7 +314,7 @@
                     {
                         "id": "machpunch",
                         "base_power": 40,
-                        "type": "FIGHTING",
+                        "move_type": "FIGHTING",
                         "category": "PHYSICAL",
                         "priority": 1,
                         "accuracy": 1.0,
@@ -334,7 +334,7 @@
                     {
                         "id": "facade",
                         "base_power": 70,
-                        "type": "NORMAL",
+                        "move_type": "NORMAL",
                         "category": "PHYSICAL",
                         "priority": 0,
                         "accuracy": 1.0,
@@ -376,7 +376,7 @@
                     {
                         "id": "terablast",
                         "base_power": 80,
-                        "type": "NORMAL",
+                        "move_type": "NORMAL",
                         "category": "SPECIAL",
                         "priority": 0,
                         "accuracy": 1.0,
@@ -396,7 +396,7 @@
                     {
                         "id": "moonblast",
                         "base_power": 95,
-                        "type": "FAIRY",
+                        "move_type": "FAIRY",
                         "category": "SPECIAL",
                         "priority": 0,
                         "accuracy": 1.0,
@@ -416,7 +416,7 @@
                     {
                         "id": "bugbuzz",
                         "base_power": 90,
-                        "type": "BUG",
+                        "move_type": "BUG",
                         "category": "SPECIAL",
                         "priority": 0,
                         "accuracy": 1.0,
@@ -436,7 +436,7 @@
                     {
                         "id": "quiverdance",
                         "base_power": 0,
-                        "type": "BUG",
+                        "move_type": "BUG",
                         "category": "STATUS",
                         "priority": 0,
                         "accuracy": 1.0,
@@ -478,7 +478,7 @@
                     {
                         "id": "roost",
                         "base_power": 0,
-                        "type": "FLYING",
+                        "move_type": "FLYING",
                         "category": "STATUS",
                         "priority": 0,
                         "accuracy": 1.0,
@@ -498,7 +498,7 @@
                     {
                         "id": "hurricane",
                         "base_power": 110,
-                        "type": "FLYING",
+                        "move_type": "FLYING",
                         "category": "SPECIAL",
                         "priority": 0,
                         "accuracy": 0.7,
@@ -518,7 +518,7 @@
                     {
                         "id": "revelationdance",
                         "base_power": 90,
-                        "type": "NORMAL",
+                        "move_type": "NORMAL",
                         "category": "SPECIAL",
                         "priority": 0,
                         "accuracy": 1.0,
@@ -538,7 +538,7 @@
                     {
                         "id": "quiverdance",
                         "base_power": 0,
-                        "type": "BUG",
+                        "move_type": "BUG",
                         "category": "STATUS",
                         "priority": 0,
                         "accuracy": 1.0,

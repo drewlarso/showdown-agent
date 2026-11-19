@@ -2,18 +2,18 @@ from factories import make_move, make_pokemon
 from pytest import approx
 
 from agent.engine.simulate import get_friendly_first_chance, simulate_switch, simulate_turn
-from agent.engine.state import Action, Boosts, GameState
+from agent.engine.state import Action, Boosts, Category, GameState, Type
 
 
 def test_outcome_probabilities_add_to_one():
     move = make_move(accuracy=0.75)
     state = GameState(
         friendly_pokemon=make_pokemon(moves=(move,)),
-        opponent_pokemon=make_pokemon(),
+        opponent_pokemon=make_pokemon(moves=(move,)),
         friendly_bench=(),
     )
 
-    outcomes = simulate_turn(state, Action(is_switch=False, index=0), move)
+    outcomes = simulate_turn(state, Action(is_switch=False, index=0), 0)
     probabilities = [probability for probability, _state in outcomes]
 
     assert sum(probabilities) == approx(1.0)
@@ -39,29 +39,31 @@ def test_ko_prevents_second_move():
     strong_move = make_move(base_power=999)
     state = GameState(
         friendly_pokemon=make_pokemon(spe=300, moves=(strong_move,)),
-        opponent_pokemon=make_pokemon(spe=100),
+        opponent_pokemon=make_pokemon(spe=100, moves=(make_move(),)),
         friendly_bench=(),
     )
 
-    outcomes = simulate_turn(state, Action(is_switch=False, index=0), make_move())
+    outcomes = simulate_turn(state, Action(is_switch=False, index=0), 0)
 
     assert all(next_state.opponent_pokemon.hp_percent == 0 for _, next_state in outcomes)
     assert all(next_state.friendly_pokemon.hp_percent == 1.0 for _, next_state in outcomes)
 
 
 def test_self_destruct_and_recoil():
-    status_move = make_move(base_power=0, category="STATUS")
+    status_move = make_move(base_power=0, category=Category.STATUS)
     explosion = make_move(id="explosion", base_power=999, self_destruct=True)
     brave_bird = make_move(id="bravebird", recoil=0.33)
 
-    exploding = GameState(make_pokemon(spe=300, moves=(explosion,)), make_pokemon(spe=100), ())
-    recoiling = GameState(make_pokemon(spe=300, moves=(brave_bird,)), make_pokemon(spe=100), ())
-    nearly_fainted = GameState(make_pokemon(spe=300, hp_percent=0.01, moves=(brave_bird,)), make_pokemon(spe=100), ())
+    opponent = make_pokemon(spe=100, moves=(status_move,))
+
+    exploding = GameState(make_pokemon(spe=300, moves=(explosion,)), opponent, ())
+    recoiling = GameState(make_pokemon(spe=300, moves=(brave_bird,)), opponent, ())
+    nearly_fainted = GameState(make_pokemon(spe=300, hp_percent=0.01, moves=(brave_bird,)), opponent, ())
 
     use_move = Action(is_switch=False, index=0)
-    exploded = simulate_turn(exploding, use_move, status_move)
-    recoiled = simulate_turn(recoiling, use_move, status_move)
-    recoil_fainted = simulate_turn(nearly_fainted, use_move, status_move)
+    exploded = simulate_turn(exploding, use_move, 0)
+    recoiled = simulate_turn(recoiling, use_move, 0)
+    recoil_fainted = simulate_turn(nearly_fainted, use_move, 0)
 
     assert all(next_state.friendly_pokemon.hp_percent == 0 for _, next_state in exploded)
     assert all(next_state.friendly_pokemon.hp_percent < 1 for _, next_state in recoiled)
@@ -69,14 +71,14 @@ def test_self_destruct_and_recoil():
 
 
 def test_switch_swaps_active_and_resets_boosts():
-    active = make_pokemon(types=("FIRE",), hp_percent=0.7, boosts=Boosts(atk=2))
-    bench = make_pokemon(types=("WATER",))
+    active = make_pokemon(types=(Type.FIRE,), hp_percent=0.7, boosts=Boosts(atk=2))
+    bench = make_pokemon(types=(Type.WATER,))
     state = GameState(active, make_pokemon(), (bench,))
 
     switched = simulate_switch(state, 0)
     switched_out = switched.friendly_bench[0]
 
     assert switched.friendly_pokemon == bench
-    assert switched_out.types == ("FIRE",)
+    assert switched_out.types == (Type.FIRE,)
     assert switched_out.boosts == Boosts()
     assert switched_out.hp_percent == 0.7

@@ -1,22 +1,23 @@
 from dataclasses import replace
 
 from agent.engine.mechanics import get_damage_percent, get_end_of_turn_hp, get_speed
-from agent.engine.state import Action, Boosts, GameState, MoveState, PokemonState
+from agent.engine.state import Action, Boosts, GameState, Item, MoveState, PokemonState
 
 
 def simulate_turn(
     state: GameState,
     friendly_action: Action,
-    opponent_move: MoveState,
+    opponent_move_index: int,
 ) -> list[tuple[float, GameState]]:
     if friendly_action.is_switch:
         switched_state = simulate_switch(state, friendly_action.index)
         return [
             (probability, end_turn(next_state))
-            for probability, next_state in simulate_move(switched_state, opponent_move, friendly_attacking=False)
+            for probability, next_state in simulate_move(switched_state, opponent_move_index, friendly_attacking=False)
         ]
 
     friendly_move = state.friendly_pokemon.moves[friendly_action.index]
+    opponent_move = state.opponent_pokemon.moves[opponent_move_index]
     friendly_first_chance = get_friendly_first_chance(state, friendly_move, opponent_move)
     outcomes: list[tuple[float, GameState]] = []
 
@@ -25,28 +26,32 @@ def simulate_turn(
             continue
 
         if friendly_first:
-            first_move, second_move = friendly_move, opponent_move
+            first_index, second_index = friendly_action.index, opponent_move_index
         else:
-            first_move, second_move = opponent_move, friendly_move
+            first_index, second_index = opponent_move_index, friendly_action.index
 
-        for first_probability, first_state in simulate_move(state, first_move, friendly_first):
+        for first_probability, first_state in simulate_move(state, first_index, friendly_first):
             branch_probability = order_probability * first_probability
             if has_anyone_fainted(first_state):
                 outcomes.append((branch_probability, first_state))
                 continue
 
-            for second_probability, second_state in simulate_move(first_state, second_move, not friendly_first):
+            for second_probability, second_state in simulate_move(first_state, second_index, not friendly_first):
                 outcomes.append((branch_probability * second_probability, second_state))
 
     return [(probability, end_turn(next_state)) for probability, next_state in outcomes]
 
 
 def get_friendly_actions(state: GameState) -> list[Action]:
-    actions = [Action(is_switch=False, index=index) for index in range(len(state.friendly_pokemon.moves))]
+    actions = [Action(is_switch=False, index=index) for index in get_usable_move_indices(state.friendly_pokemon)]
     for bench_index, pokemon_state in enumerate(state.friendly_bench):
         if pokemon_state.hp_percent > 0:
             actions.append(Action(is_switch=True, index=bench_index))
     return actions
+
+
+def get_usable_move_indices(pokemon: PokemonState) -> list[int]:
+    return [index for index in range(len(pokemon.moves)) if pokemon.locked_move in (None, index)]
 
 
 def has_anyone_fainted(state: GameState) -> bool:
@@ -56,7 +61,7 @@ def has_anyone_fainted(state: GameState) -> bool:
 def simulate_switch(state: GameState, bench_index: int) -> GameState:
     bench = list(state.friendly_bench)
     new_active = bench[bench_index]
-    bench[bench_index] = replace(state.friendly_pokemon, boosts=Boosts())
+    bench[bench_index] = replace(state.friendly_pokemon, boosts=Boosts(), locked_move=None)
     return replace(state, friendly_pokemon=new_active, friendly_bench=tuple(bench))
 
 
@@ -71,7 +76,7 @@ def get_friendly_first_chance(state: GameState, friendly_move: MoveState, oppone
     return 0.5
 
 
-def simulate_move(state: GameState, move: MoveState, friendly_attacking: bool) -> list[tuple[float, GameState]]:
+def simulate_move(state: GameState, move_index: int, friendly_attacking: bool) -> list[tuple[float, GameState]]:
     possibilities: list[tuple[float, GameState]] = []
 
     if friendly_attacking:
@@ -80,9 +85,10 @@ def simulate_move(state: GameState, move: MoveState, friendly_attacking: bool) -
     else:
         attacker = state.opponent_pokemon
         defender = state.friendly_pokemon
+    move = attacker.moves[move_index]
 
-    if attacker.item.startswith("choice"):
-        attacker = replace(attacker, moves=(move,))
+    if attacker.item in (Item.CHOICE_BAND, Item.CHOICE_SCARF, Item.CHOICE_SPECS):
+        attacker = replace(attacker, locked_move=move_index)
 
     if move.accuracy < 1.0:
         possibilities.append((1 - move.accuracy, replace_active_pokemon(state, attacker, defender, friendly_attacking)))

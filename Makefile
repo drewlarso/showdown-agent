@@ -12,7 +12,8 @@ stubs:
 debug: stubs run
 
 format:
-	@uv run ruff format .
+	@uv run ruff format src
+	@cargo fmt
 
 randbats:
 	@uv run python3 scripts/fetch_randbats.py
