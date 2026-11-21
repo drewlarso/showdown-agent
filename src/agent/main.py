@@ -7,9 +7,10 @@ from poke_env.player import MaxBasePowerPlayer, Player, RandomPlayer, SimpleHeur
 from agent.players.basic_expectimax_player import BasicExpectimaxPlayer
 from agent.players.bayes_expectimax_player import BayesExpectimaxPlayer
 from agent.players.expectimax_player import ExpectimaxPlayer
+from agent.players.rust_expectimax_player import RustExpectimaxPlayer
 from agent.trace import log_matchup, make_summary_row, save_summary
 
-N_BATTLES = 5
+N_BATTLES = 100
 
 
 def make_opponents():
@@ -48,9 +49,11 @@ async def run_gauntlet(
 
 
 async def main() -> None:
-    agent = BayesExpectimaxPlayer(depth=2, max_concurrent_battles=0)
+    agent = RustExpectimaxPlayer(depth=2, max_concurrent_battles=0)
+
+    # agent = BayesExpectimaxPlayer(depth=2, max_concurrent_battles=0)
     run_name = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    await run_gauntlet("BayesDepth2", agent, make_opponents(), Path("results") / run_name)
+    await run_gauntlet("RustDepth2", agent, make_opponents(), Path("results") / run_name)
 
 
 if __name__ == "__main__":
