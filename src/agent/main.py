@@ -4,13 +4,23 @@ from pathlib import Path
 
 from poke_env.player import MaxBasePowerPlayer, Player, RandomPlayer, SimpleHeuristicsPlayer
 
+from agent._core import search_rust
 from agent.players.basic_expectimax_player import BasicExpectimaxPlayer
 from agent.players.bayes_expectimax_player import BayesExpectimaxPlayer
 from agent.players.expectimax_player import ExpectimaxPlayer
-from agent.players.rust_expectimax_player import RustExpectimaxPlayer
 from agent.trace import log_matchup, make_summary_row, save_summary
 
-N_BATTLES = 100
+N_BATTLES = 500
+
+
+def make_agents():
+    return {
+        # "BasicDepth1": BasicExpectimaxPlayer(depth=1, search=search_rust, max_concurrent_battles=0),
+        # "BasicDepth2": BasicExpectimaxPlayer(depth=2, search=search_rust, max_concurrent_battles=0),
+        # "BayesDepth1": BayesExpectimaxPlayer(depth=1, search=search_rust, max_concurrent_battles=0),
+        "BayesDepth2": BayesExpectimaxPlayer(depth=2, search=search_rust, max_concurrent_battles=0),
+        "BayesDepth3": BayesExpectimaxPlayer(depth=3, search=search_rust, max_concurrent_battles=0),
+    }
 
 
 def make_opponents():
@@ -18,10 +28,11 @@ def make_opponents():
         "Random": RandomPlayer(max_concurrent_battles=0),
         "MaxBasePower": MaxBasePowerPlayer(max_concurrent_battles=0),
         "SimpleHeuristics": SimpleHeuristicsPlayer(max_concurrent_battles=0),
-        "BasicDepth1": BasicExpectimaxPlayer(depth=1, max_concurrent_battles=0),
-        "BasicDepth2": BasicExpectimaxPlayer(depth=2, max_concurrent_battles=0),
-        "BayesDepth1": BayesExpectimaxPlayer(depth=1, max_concurrent_battles=0),
-        "BayesDepth2": BayesExpectimaxPlayer(depth=2, max_concurrent_battles=0),
+        "BasicDepth1": BasicExpectimaxPlayer(depth=1, search=search_rust, max_concurrent_battles=0),
+        "BasicDepth2": BasicExpectimaxPlayer(depth=2, search=search_rust, max_concurrent_battles=0),
+        "BayesDepth1": BayesExpectimaxPlayer(depth=1, search=search_rust, max_concurrent_battles=0),
+        "BayesDepth2": BayesExpectimaxPlayer(depth=2, search=search_rust, max_concurrent_battles=0),
+        "BayesDepth3": BayesExpectimaxPlayer(depth=3, search=search_rust, max_concurrent_battles=0),
     }
 
 
@@ -49,11 +60,10 @@ async def run_gauntlet(
 
 
 async def main() -> None:
-    agent = RustExpectimaxPlayer(depth=2, max_concurrent_battles=0)
+    run_folder = Path("results") / datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
-    # agent = BayesExpectimaxPlayer(depth=2, max_concurrent_battles=0)
-    run_name = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    await run_gauntlet("RustDepth2", agent, make_opponents(), Path("results") / run_name)
+    for agent_name, agent in make_agents().items():
+        await run_gauntlet(agent_name, agent, make_opponents(), run_folder / agent_name)
 
 
 if __name__ == "__main__":

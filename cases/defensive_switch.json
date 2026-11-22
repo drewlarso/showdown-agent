@@ -1,0 +1,610 @@
+{
+    "name": "defensive_switch",
+    "description": "Blissey is at 81% against a full HP Decidueye-Hisui, which is faster and has a fully revealed moveset. Triple Arrows is a Fighting move that does about 117% to Blissey, and Seismic Toss only does about 29% back. Vespiquen (bench slot 1) is Bug/Flying and takes at most about 7%, so switching is the best play even though attacking is legal",
+    "friendly": "Blissey",
+    "opponent": "Decidueye-Hisui",
+    "depth": 2,
+    "expected": "switch:1",
+    "state": {
+        "friendly_pokemon": {
+            "level": 85,
+            "hp_percent": 0.8129370629370629,
+            "max_hp": 572,
+            "atk": 22,
+            "defense": 66,
+            "spa": 176,
+            "spd": 278,
+            "spe": 142,
+            "boosts": {
+                "atk": 0,
+                "defense": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+            },
+            "status": "",
+            "item": "leftovers",
+            "types": ["NORMAL"],
+            "moves": [
+                {
+                    "id": "seismictoss",
+                    "base_power": 0,
+                    "move_type": "FIGHTING",
+                    "category": "PHYSICAL",
+                    "priority": 0,
+                    "accuracy": 1.0,
+                    "prior": 1.0,
+                    "heal": 0.0,
+                    "drain": 0.0,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 0,
+                        "defense": 0,
+                        "spa": 0,
+                        "spd": 0,
+                        "spe": 0
+                    }
+                },
+                {
+                    "id": "thunderwave",
+                    "base_power": 0,
+                    "move_type": "ELECTRIC",
+                    "category": "STATUS",
+                    "priority": 0,
+                    "accuracy": 0.9,
+                    "prior": 1.0,
+                    "heal": 0.0,
+                    "drain": 0.0,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 0,
+                        "defense": 0,
+                        "spa": 0,
+                        "spd": 0,
+                        "spe": 0
+                    }
+                },
+                {
+                    "id": "softboiled",
+                    "base_power": 0,
+                    "move_type": "NORMAL",
+                    "category": "STATUS",
+                    "priority": 0,
+                    "accuracy": 1.0,
+                    "prior": 1.0,
+                    "heal": 0.5,
+                    "drain": 0.0,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 0,
+                        "defense": 0,
+                        "spa": 0,
+                        "spd": 0,
+                        "spe": 0
+                    }
+                },
+                {
+                    "id": "healbell",
+                    "base_power": 0,
+                    "move_type": "NORMAL",
+                    "category": "STATUS",
+                    "priority": 0,
+                    "accuracy": 1.0,
+                    "prior": 1.0,
+                    "heal": 0.0,
+                    "drain": 0.0,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 0,
+                        "defense": 0,
+                        "spa": 0,
+                        "spd": 0,
+                        "spe": 0
+                    }
+                }
+            ],
+            "locked_move": null
+        },
+        "opponent_pokemon": {
+            "level": 87,
+            "hp_percent": 1.0,
+            "max_hp": 295,
+            "atk": 245,
+            "defense": 189,
+            "spa": 215,
+            "spd": 215,
+            "spe": 154,
+            "boosts": {
+                "atk": 0,
+                "defense": 0,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+            },
+            "status": "",
+            "item": "leftovers",
+            "types": ["GRASS", "FIGHTING"],
+            "moves": [
+                {
+                    "id": "leafblade",
+                    "base_power": 90,
+                    "move_type": "GRASS",
+                    "category": "PHYSICAL",
+                    "priority": 0,
+                    "accuracy": 1.0,
+                    "prior": 1.0,
+                    "heal": 0.0,
+                    "drain": 0.0,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 0,
+                        "defense": 0,
+                        "spa": 0,
+                        "spd": 0,
+                        "spe": 0
+                    }
+                },
+                {
+                    "id": "roost",
+                    "base_power": 0,
+                    "move_type": "FLYING",
+                    "category": "STATUS",
+                    "priority": 0,
+                    "accuracy": 1.0,
+                    "prior": 1.0,
+                    "heal": 0.5,
+                    "drain": 0.0,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 0,
+                        "defense": 0,
+                        "spa": 0,
+                        "spd": 0,
+                        "spe": 0
+                    }
+                },
+                {
+                    "id": "triplearrows",
+                    "base_power": 90,
+                    "move_type": "FIGHTING",
+                    "category": "PHYSICAL",
+                    "priority": 0,
+                    "accuracy": 1.0,
+                    "prior": 1.0,
+                    "heal": 0.0,
+                    "drain": 0.0,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 0,
+                        "defense": 0,
+                        "spa": 0,
+                        "spd": 0,
+                        "spe": 0
+                    }
+                }
+            ],
+            "locked_move": null
+        },
+        "friendly_bench": [
+            {
+                "level": 80,
+                "hp_percent": 1.0,
+                "max_hp": 291,
+                "atk": 206,
+                "defense": 254,
+                "spa": 118,
+                "spd": 190,
+                "spe": 102,
+                "boosts": {
+                    "atk": 0,
+                    "defense": 0,
+                    "spa": 0,
+                    "spd": 0,
+                    "spe": 0
+                },
+                "status": "",
+                "item": "leftovers",
+                "types": ["ROCK"],
+                "moves": [
+                    {
+                        "id": "saltcure",
+                        "base_power": 40,
+                        "move_type": "ROCK",
+                        "category": "PHYSICAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "protect",
+                        "base_power": 0,
+                        "move_type": "NORMAL",
+                        "category": "STATUS",
+                        "priority": 4,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "recover",
+                        "base_power": 0,
+                        "move_type": "NORMAL",
+                        "category": "STATUS",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.5,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "earthquake",
+                        "base_power": 100,
+                        "move_type": "GROUND",
+                        "category": "PHYSICAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    }
+                ],
+                "locked_move": null
+            },
+            {
+                "level": 99,
+                "hp_percent": 0.6287625418060201,
+                "max_hp": 299,
+                "atk": 163,
+                "defense": 258,
+                "spa": 214,
+                "spd": 258,
+                "spe": 135,
+                "boosts": {
+                    "atk": 0,
+                    "defense": 0,
+                    "spa": 0,
+                    "spd": 0,
+                    "spe": 0
+                },
+                "status": "",
+                "item": "other",
+                "types": ["BUG", "FLYING"],
+                "moves": [
+                    {
+                        "id": "toxic",
+                        "base_power": 0,
+                        "move_type": "POISON",
+                        "category": "STATUS",
+                        "priority": 0,
+                        "accuracy": 0.9,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "hurricane",
+                        "base_power": 110,
+                        "move_type": "FLYING",
+                        "category": "SPECIAL",
+                        "priority": 0,
+                        "accuracy": 0.7,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "roost",
+                        "base_power": 0,
+                        "move_type": "FLYING",
+                        "category": "STATUS",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.5,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "spikes",
+                        "base_power": 0,
+                        "move_type": "GROUND",
+                        "category": "STATUS",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    }
+                ],
+                "locked_move": null
+            },
+            {
+                "level": 75,
+                "hp_percent": 1.0,
+                "max_hp": 257,
+                "atk": 231,
+                "defense": 179,
+                "spa": 216,
+                "spd": 164,
+                "spe": 195,
+                "boosts": {
+                    "atk": 0,
+                    "defense": 0,
+                    "spa": 0,
+                    "spd": 0,
+                    "spe": 0
+                },
+                "status": "",
+                "item": "lifeorb",
+                "types": ["GROUND", "FLYING"],
+                "moves": [
+                    {
+                        "id": "earthpower",
+                        "base_power": 90,
+                        "move_type": "GROUND",
+                        "category": "SPECIAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "stealthrock",
+                        "base_power": 0,
+                        "move_type": "ROCK",
+                        "category": "STATUS",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "rockslide",
+                        "base_power": 75,
+                        "move_type": "ROCK",
+                        "category": "PHYSICAL",
+                        "priority": 0,
+                        "accuracy": 0.9,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "psychic",
+                        "base_power": 90,
+                        "move_type": "PSYCHIC",
+                        "category": "SPECIAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    }
+                ],
+                "locked_move": null
+            },
+            {
+                "level": 89,
+                "hp_percent": 1.0,
+                "max_hp": 234,
+                "atk": 215,
+                "defense": 243,
+                "spa": 215,
+                "spd": 243,
+                "spe": 113,
+                "boosts": {
+                    "atk": 0,
+                    "defense": 0,
+                    "spa": 0,
+                    "spd": 0,
+                    "spe": 0
+                },
+                "status": "",
+                "item": "leftovers",
+                "types": ["GHOST", "DARK"],
+                "moves": [
+                    {
+                        "id": "foulplay",
+                        "base_power": 95,
+                        "move_type": "DARK",
+                        "category": "PHYSICAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "suckerpunch",
+                        "base_power": 70,
+                        "move_type": "DARK",
+                        "category": "PHYSICAL",
+                        "priority": 1,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "willowisp",
+                        "base_power": 0,
+                        "move_type": "FIRE",
+                        "category": "STATUS",
+                        "priority": 0,
+                        "accuracy": 0.85,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "poltergeist",
+                        "base_power": 110,
+                        "move_type": "GHOST",
+                        "category": "PHYSICAL",
+                        "priority": 0,
+                        "accuracy": 0.9,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    }
+                ],
+                "locked_move": null
+            }
+        ]
+    }
+}

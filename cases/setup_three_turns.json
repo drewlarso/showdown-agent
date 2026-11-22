@@ -1,0 +1,547 @@
+{
+    "name": "setup_three_turns",
+    "description": "Hitmonchan (61%, Leftovers) and Great Tusk (50%) are both already at +1 Attack and +1 Defense, and Hitmonchan is slightly faster. At +1, Drain Punch only does about 24%, so two hits do not KO, and Great Tusk's Close Combat (about 62%) can KO Hitmonchan this turn. After Bulk Up, Drain Punch does about 31%, so two hits KO, and Close Combat drops to about 46%, so Hitmonchan survives. The payoff takes three turns (Bulk Up, Drain Punch, Drain Punch), so it only shows at depth 3 and above",
+    "friendly": "Hitmonchan",
+    "opponent": "Great-Tusk",
+    "depth": 3,
+    "expected": "bulkup",
+    "state": {
+        "friendly_pokemon": {
+            "level": 87,
+            "hp_percent": 0.6069868995633187,
+            "max_hp": 229,
+            "atk": 232,
+            "defense": 187,
+            "spa": 111,
+            "spd": 241,
+            "spe": 182,
+            "boosts": {
+                "atk": 1,
+                "defense": 1,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+            },
+            "status": "",
+            "item": "leftovers",
+            "types": ["FIGHTING"],
+            "moves": [
+                {
+                    "id": "poisonjab",
+                    "base_power": 80,
+                    "move_type": "POISON",
+                    "category": "PHYSICAL",
+                    "priority": 0,
+                    "accuracy": 1.0,
+                    "prior": 1.0,
+                    "heal": 0.0,
+                    "drain": 0.0,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 0,
+                        "defense": 0,
+                        "spa": 0,
+                        "spd": 0,
+                        "spe": 0
+                    }
+                },
+                {
+                    "id": "drainpunch",
+                    "base_power": 75,
+                    "move_type": "FIGHTING",
+                    "category": "PHYSICAL",
+                    "priority": 0,
+                    "accuracy": 1.0,
+                    "prior": 1.0,
+                    "heal": 0.0,
+                    "drain": 0.5,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 0,
+                        "defense": 0,
+                        "spa": 0,
+                        "spd": 0,
+                        "spe": 0
+                    }
+                },
+                {
+                    "id": "knockoff",
+                    "base_power": 65,
+                    "move_type": "DARK",
+                    "category": "PHYSICAL",
+                    "priority": 0,
+                    "accuracy": 1.0,
+                    "prior": 1.0,
+                    "heal": 0.0,
+                    "drain": 0.0,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 0,
+                        "defense": 0,
+                        "spa": 0,
+                        "spd": 0,
+                        "spe": 0
+                    }
+                },
+                {
+                    "id": "bulkup",
+                    "base_power": 0,
+                    "move_type": "FIGHTING",
+                    "category": "STATUS",
+                    "priority": 0,
+                    "accuracy": 1.0,
+                    "prior": 1.0,
+                    "heal": 0.0,
+                    "drain": 0.0,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 1,
+                        "defense": 1,
+                        "spa": 0,
+                        "spd": 0,
+                        "spe": 0
+                    }
+                }
+            ],
+            "locked_move": null
+        },
+        "opponent_pokemon": {
+            "level": 77,
+            "hp_percent": 0.5,
+            "max_hp": 304,
+            "atk": 246,
+            "defense": 246,
+            "spa": 126,
+            "spd": 126,
+            "spe": 179,
+            "boosts": {
+                "atk": 1,
+                "defense": 1,
+                "spa": 0,
+                "spd": 0,
+                "spe": 0
+            },
+            "status": "",
+            "item": "",
+            "types": ["GROUND", "FIGHTING"],
+            "moves": [
+                {
+                    "id": "earthquake",
+                    "base_power": 100,
+                    "move_type": "GROUND",
+                    "category": "PHYSICAL",
+                    "priority": 0,
+                    "accuracy": 1.0,
+                    "prior": 1.0,
+                    "heal": 0.0,
+                    "drain": 0.0,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 0,
+                        "defense": 0,
+                        "spa": 0,
+                        "spd": 0,
+                        "spe": 0
+                    }
+                },
+                {
+                    "id": "bulkup",
+                    "base_power": 0,
+                    "move_type": "FIGHTING",
+                    "category": "STATUS",
+                    "priority": 0,
+                    "accuracy": 1.0,
+                    "prior": 1.0,
+                    "heal": 0.0,
+                    "drain": 0.0,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 1,
+                        "defense": 1,
+                        "spa": 0,
+                        "spd": 0,
+                        "spe": 0
+                    }
+                },
+                {
+                    "id": "closecombat",
+                    "base_power": 120,
+                    "move_type": "FIGHTING",
+                    "category": "PHYSICAL",
+                    "priority": 0,
+                    "accuracy": 1.0,
+                    "prior": 0.6666666666666666,
+                    "heal": 0.0,
+                    "drain": 0.0,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 0,
+                        "defense": -1,
+                        "spa": 0,
+                        "spd": -1,
+                        "spe": 0
+                    }
+                },
+                {
+                    "id": "rapidspin",
+                    "base_power": 50,
+                    "move_type": "NORMAL",
+                    "category": "PHYSICAL",
+                    "priority": 0,
+                    "accuracy": 1.0,
+                    "prior": 0.6666666666666666,
+                    "heal": 0.0,
+                    "drain": 0.0,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 0,
+                        "defense": 0,
+                        "spa": 0,
+                        "spd": 0,
+                        "spe": 0
+                    }
+                },
+                {
+                    "id": "stoneedge",
+                    "base_power": 100,
+                    "move_type": "ROCK",
+                    "category": "PHYSICAL",
+                    "priority": 0,
+                    "accuracy": 0.8,
+                    "prior": 0.6666666666666666,
+                    "heal": 0.0,
+                    "drain": 0.0,
+                    "recoil": 0.0,
+                    "self_destruct": false,
+                    "self_boosts": {
+                        "atk": 0,
+                        "defense": 0,
+                        "spa": 0,
+                        "spd": 0,
+                        "spe": 0
+                    }
+                }
+            ],
+            "locked_move": null
+        },
+        "friendly_bench": [
+            {
+                "level": 82,
+                "hp_percent": 0.04946996466431095,
+                "max_hp": 283,
+                "atk": 195,
+                "defense": 165,
+                "spa": 195,
+                "spd": 259,
+                "spe": 224,
+                "boosts": {
+                    "atk": 0,
+                    "defense": 0,
+                    "spa": 0,
+                    "spd": 0,
+                    "spe": 0
+                },
+                "status": "",
+                "item": "lifeorb",
+                "types": ["GRASS", "FIGHTING"],
+                "moves": [
+                    {
+                        "id": "swordsdance",
+                        "base_power": 0,
+                        "move_type": "NORMAL",
+                        "category": "STATUS",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 2,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "stoneedge",
+                        "base_power": 100,
+                        "move_type": "ROCK",
+                        "category": "PHYSICAL",
+                        "priority": 0,
+                        "accuracy": 0.8,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "closecombat",
+                        "base_power": 120,
+                        "move_type": "FIGHTING",
+                        "category": "PHYSICAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": -1,
+                            "spa": 0,
+                            "spd": -1,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "leafblade",
+                        "base_power": 90,
+                        "move_type": "GRASS",
+                        "category": "PHYSICAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    }
+                ],
+                "locked_move": null
+            },
+            {
+                "level": 96,
+                "hp_percent": 0.5977859778597786,
+                "max_hp": 271,
+                "atk": 141,
+                "defense": 189,
+                "spa": 141,
+                "spd": 227,
+                "spe": 237,
+                "boosts": {
+                    "atk": 0,
+                    "defense": 0,
+                    "spa": 0,
+                    "spd": 0,
+                    "spe": 0
+                },
+                "status": "",
+                "item": "assaultvest",
+                "types": ["ELECTRIC"],
+                "moves": [
+                    {
+                        "id": "superfang",
+                        "base_power": 0,
+                        "move_type": "NORMAL",
+                        "category": "PHYSICAL",
+                        "priority": 0,
+                        "accuracy": 0.9,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "nuzzle",
+                        "base_power": 20,
+                        "move_type": "ELECTRIC",
+                        "category": "PHYSICAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "thunderbolt",
+                        "base_power": 90,
+                        "move_type": "ELECTRIC",
+                        "category": "SPECIAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "uturn",
+                        "base_power": 70,
+                        "move_type": "BUG",
+                        "category": "PHYSICAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    }
+                ],
+                "locked_move": null
+            },
+            {
+                "level": 78,
+                "hp_percent": 0.29767441860465116,
+                "max_hp": 215,
+                "atk": 170,
+                "defense": 223,
+                "spa": 239,
+                "spd": 139,
+                "spe": 257,
+                "boosts": {
+                    "atk": 0,
+                    "defense": 0,
+                    "spa": 0,
+                    "spd": 0,
+                    "spe": 0
+                },
+                "status": "BRN",
+                "item": "choicespecs",
+                "types": ["ICE", "WATER"],
+                "moves": [
+                    {
+                        "id": "icebeam",
+                        "base_power": 90,
+                        "move_type": "ICE",
+                        "category": "SPECIAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "freezedry",
+                        "base_power": 70,
+                        "move_type": "ICE",
+                        "category": "SPECIAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "hydropump",
+                        "base_power": 110,
+                        "move_type": "WATER",
+                        "category": "SPECIAL",
+                        "priority": 0,
+                        "accuracy": 0.8,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    },
+                    {
+                        "id": "flipturn",
+                        "base_power": 60,
+                        "move_type": "WATER",
+                        "category": "PHYSICAL",
+                        "priority": 0,
+                        "accuracy": 1.0,
+                        "prior": 1.0,
+                        "heal": 0.0,
+                        "drain": 0.0,
+                        "recoil": 0.0,
+                        "self_destruct": false,
+                        "self_boosts": {
+                            "atk": 0,
+                            "defense": 0,
+                            "spa": 0,
+                            "spd": 0,
+                            "spe": 0
+                        }
+                    }
+                ],
+                "locked_move": null
+            }
+        ]
+    }
+}

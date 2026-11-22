@@ -2,9 +2,9 @@ import json
 from pathlib import Path
 from time import perf_counter
 
-from agent.engine.search import search_python
+from agent._core import search_rust
 
-DEPTHS = (1, 2, 3)
+DEPTHS = (1, 2, 3, 4)
 
 
 def run_cases():
@@ -20,7 +20,7 @@ def run_cases():
 
         for depth in DEPTHS:
             start = perf_counter()
-            result = search_python(json.dumps(state), depth)
+            result = search_rust(json.dumps(state), depth)
             ms = (perf_counter() - start) * 1000
 
             action = result.action

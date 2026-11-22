@@ -1,13 +1,30 @@
-from collections.abc import Callable
+from collections.abc import Callable, Sequence
 from dataclasses import dataclass
 from time import perf_counter
+from typing import Protocol
 
 from poke_env.battle import AbstractBattle, Battle, Move, Pokemon
 from poke_env.player import BattleOrder, Player, SingleBattleOrder
 
 from agent.build import GetOpponentMovePriors, build_state
-from agent.engine.search import SearchResult
 from agent.engine.state import dump_game_state
+
+
+class SearchAction(Protocol):
+    @property
+    def is_switch(self) -> bool: ...
+    @property
+    def index(self) -> int: ...
+
+
+class SearchResult(Protocol):
+    @property
+    def action(self) -> SearchAction | None: ...
+    @property
+    def action_values(self) -> Sequence[tuple[SearchAction, float]]: ...
+    @property
+    def nodes_processed(self) -> int: ...
+
 
 type SearchFunction = Callable[[str, int], SearchResult]
 

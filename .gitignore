@@ -19,6 +19,7 @@ data/
 results/*
 !results/baseline/
 !results/beliefs/
+!results/depth3/
 !results/cases.md
 results/**/*.json
 .pytest_cache/
